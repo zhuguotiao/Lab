@@ -17,9 +17,10 @@ public:
     ~PatientEditView();
 
 private slots:
-    void on_pushButton_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_btSave_clicked();
+
+    void on_btCancel_clicked();
 
 private:
     Ui::PatientEditView *ui;

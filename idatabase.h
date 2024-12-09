@@ -6,6 +6,7 @@
 #include <QSqlDatabase>
 #include <QDataWidgetMapper>
 
+
 class IDatabase : public QObject
 {
     Q_OBJECT
@@ -38,6 +39,22 @@ private:
 signals:
 
 public:
+    //分页相关记录
+    int pageSize;  // 每页数据量
+    int currentPage;  // 当前页码
+    int totalRecords;
+    QString filter;//查询条件
+    void setPageSize(int size);
+    void setCurrentPage(int page);
+    bool loadPageData();
+
+    int getMaxPage() const;// 计算最大页数
+
+    //导入和导出功能实现
+    bool exportData();
+    bool importData();
+
+    //1.患者管理相关
     bool initPatientModel();
     //查找函数
     bool searchPatient(QString filter);
@@ -49,9 +66,16 @@ public:
     int addNewPatient();
 
     //数据模型
-    QSqlTableModel * patientTabModel;
+    QSqlTableModel * tabModel;
     //选择模型
-    QItemSelectionModel *thePatientSelection;
+    QItemSelectionModel *selection;
+
+    //2.医生管理相关
+
+    //3.药品管理相关
+
+    //2.就诊记录管理相关
+
 };
 
 #endif // IDATABASE_H
