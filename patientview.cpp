@@ -103,13 +103,15 @@ void PatientView::on_btSearch_clicked()
     qDebug() << "Final filter string:" << filter;
 
     // 调用数据库实例的搜索方法
-    IDatabase::getInstance().searchPatient(filter);
+    IDatabase::getInstance().search(filter);
+    ui->totalAndCurrent->setText("第1页");
+
 }
 
 
 void PatientView::on_btDelete_clicked()
 {
-    IDatabase::getInstance().deleteCurrentPatient();
+    IDatabase::getInstance().deleteCurrent();
 }
 
 

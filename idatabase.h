@@ -39,6 +39,7 @@ private:
 signals:
 
 public:
+    QString tableName;//表格名字
     //分页相关记录
     int pageSize;  // 每页数据量
     int currentPage;  // 当前页码
@@ -48,20 +49,23 @@ public:
     void setCurrentPage(int page);
     bool loadPageData();
 
+
     int getMaxPage() const;// 计算最大页数
 
     //导入和导出功能实现
     bool exportData();
     bool importData();
 
+    //通用操作
+    //查找函数
+    bool search(QString filter);
+    //删除患者
+    bool deleteCurrent();
+    bool submitEdit();
+    void revertEdit();
+
     //1.患者管理相关
     bool initPatientModel();
-    //查找函数
-    bool searchPatient(QString filter);
-    //删除患者
-    bool deleteCurrentPatient();
-    bool submitPatientEdit();
-    void revertPatientEdit();
 
     int addNewPatient();
 
@@ -71,6 +75,7 @@ public:
     QItemSelectionModel *selection;
 
     //2.医生管理相关
+    bool initDocotorModel();
 
     //3.药品管理相关
 
