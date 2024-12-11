@@ -28,6 +28,13 @@ private slots:
 
     void on_btNext_clicked();
 
+    void on_btImport_clicked();
+
+    void on_btExport_clicked();
+
+signals:
+    void goDoctorEditView(int index);
+
 private:
     Ui::DoctorView *ui;
 };

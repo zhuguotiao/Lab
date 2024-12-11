@@ -36,6 +36,8 @@ private:
 
 
 
+
+
 signals:
 
 public:
@@ -64,6 +66,7 @@ public:
     bool submitEdit();
     void revertEdit();
 
+
     //1.患者管理相关
     bool initPatientModel();
 
@@ -76,10 +79,14 @@ public:
 
     //2.医生管理相关
     bool initDocotorModel();
+    int addNewDoctor();
 
     //3.药品管理相关
+    bool initDrugModel();
+    int addNewDrug();
 
     //2.就诊记录管理相关
+    bool initMedicalRecordModel();
 
 };
 

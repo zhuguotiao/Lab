@@ -15,6 +15,24 @@ public:
     explicit MedicalRecordView(QWidget *parent = nullptr);
     ~MedicalRecordView();
 
+private slots:
+
+
+    void on_btPrev_clicked();
+
+    void on_btNext_clicked();
+
+    void on_btSearch_clicked();
+
+    void on_btAdd_clicked();
+
+    void on_btDelete_clicked();
+
+    void on_btEdit_clicked();
+
+signals:
+    void goDrugEditView(int index);
+
 private:
     Ui::MedicalRecordView *ui;
 };

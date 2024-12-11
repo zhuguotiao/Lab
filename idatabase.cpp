@@ -91,6 +91,105 @@ bool IDatabase::initDocotorModel()
     return loadPageData();
 }
 
+int IDatabase::addNewDoctor()
+{
+    //在末尾添加一个记录
+    tabModel->insertRow(tabModel->rowCount(),QModelIndex());
+    //创建最后一行的MOdelIndex
+    QModelIndex curIndex=tabModel->index(tabModel->rowCount()-1,1);
+
+    int curRecNo=curIndex.row();
+    QSqlRecord curRec=tabModel->record(curRecNo);
+
+    curRec.setValue("POSITION","初级");
+
+    curRec.setValue("SEX","男");
+    curRec.setValue("ID",QUuid::createUuid().toString(QUuid::WithBraces));
+
+    tabModel->setRecord(curRecNo,curRec);
+
+    return curIndex.row();
+}
+
+bool IDatabase::initDrugModel()
+{
+    tabModel=new QSqlTableModel(this,database);
+    tabModel->setTable("drug");
+    //设置数据保存方式，按行还是按列
+    tabModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    //设置排序方式
+    tabModel->setSort(tabModel->fieldIndex("name"),Qt::AscendingOrder);
+    if(!(tabModel->select()))
+        return false;
+
+    tableName="drug";
+    // 设置列标题（中文）
+    tabModel->setHeaderData(tabModel->fieldIndex("ID"), Qt::Horizontal, "编号");
+    tabModel->setHeaderData(tabModel->fieldIndex("NAME"), Qt::Horizontal, "名称");
+    tabModel->setHeaderData(tabModel->fieldIndex("DOSE"), Qt::Horizontal, "剂量");
+    tabModel->setHeaderData(tabModel->fieldIndex("INVENTORY"), Qt::Horizontal, "库存");
+    tabModel->setHeaderData(tabModel->fieldIndex("TYPE"), Qt::Horizontal, "类型");
+
+
+    qDebug()<<tabModel;
+
+    selection=new QItemSelectionModel(tabModel);
+
+    pageSize = 5; // 设置每页数据量
+    currentPage = 0; // 初始页码为0
+
+    return loadPageData();
+}
+
+int IDatabase::addNewDrug()
+{
+    //在末尾添加一个记录
+    tabModel->insertRow(tabModel->rowCount(),QModelIndex());
+    //创建最后一行的MOdelIndex
+    QModelIndex curIndex=tabModel->index(tabModel->rowCount()-1,1);
+
+    int curRecNo=curIndex.row();
+    QSqlRecord curRec=tabModel->record(curRecNo);
+
+    curRec.setValue("ID",QUuid::createUuid().toString(QUuid::WithBraces));
+    curRec.setValue("TYPE","处方");
+
+
+    tabModel->setRecord(curRecNo,curRec);
+
+    return curIndex.row();
+}
+
+bool IDatabase::initMedicalRecordModel()
+{
+    tabModel=new QSqlTableModel(this,database);
+    tabModel->setTable("medicalrecord");
+    //设置数据保存方式，按行还是按列
+    tabModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    //设置排序方式
+    tabModel->setSort(tabModel->fieldIndex("name"),Qt::AscendingOrder);
+    if(!(tabModel->select()))
+        return false;
+
+    tableName="medicalrecord";
+    // 设置列标题（中文）
+    tabModel->setHeaderData(tabModel->fieldIndex("ID"), Qt::Horizontal, "编号");
+    tabModel->setHeaderData(tabModel->fieldIndex("PATIENTNAME"), Qt::Horizontal, "患者");
+    tabModel->setHeaderData(tabModel->fieldIndex("DOCTORNAME"), Qt::Horizontal, "医生");
+    tabModel->setHeaderData(tabModel->fieldIndex("DATE"), Qt::Horizontal, "日期");
+    tabModel->setHeaderData(tabModel->fieldIndex("RESULT"), Qt::Horizontal, "就诊");
+    tabModel->setHeaderData(tabModel->fieldIndex("DRUG"), Qt::Horizontal, "开药");
+
+    qDebug()<<tabModel;
+
+    selection=new QItemSelectionModel(tabModel);
+
+    pageSize = 5; // 设置每页数据量
+    currentPage = 0; // 初始页码为0
+
+    return loadPageData();
+}
+
 bool IDatabase::search(QString filter)
 {
     IDatabase::filter=filter;

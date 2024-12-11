@@ -9,6 +9,8 @@
 #include "welcomeview.h"
 #include "medicalrecordview.h"
 #include "drugview.h"
+#include "doctoreditview.h"
+#include "drugeditview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MasterViw; }
@@ -23,15 +25,22 @@ public:
     ~MasterViw();
 
 public:
+    //页面跳转操作
     void goLoginView();
     void goWelcomeView(const QString &type);
 
     void goDoctorView();
-    void goDepartmentView();
+    void goDoctorEditView(int rowNo);
+
+
     void goPatientEditView(int rowNo);
     void goPatientView();
+
     void goMedicalRecordView();
+
     void goDrugView();
+    void goDrugEditView(int rowNo);
+
 
     void goPreviousView();
 
@@ -49,12 +58,20 @@ private:
     Ui::MasterViw *ui;
 
     LoginView *loginView;
+
     DoctorView *doctorView;
+    DoctorEditView *doctorEditView;
+
     PatientEditView *patientEditView;
     PatientView *patientView;
+
     WelcomeView *welcomeView;
+
     MedicalRecordView *medicalRecordView;
+
     DrugView *drugView;
+    DrugEditView *drugEditView;
+
     QString type;
 
 };

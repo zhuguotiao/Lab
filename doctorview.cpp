@@ -35,13 +35,25 @@ DoctorView::~DoctorView()
 
 void DoctorView::on_btSearch_clicked()
 {
+    QString filter = QString("name LIKE '%%1%'").arg(ui->textSearch->text()); // 基础过滤条件
+    qDebug() << "Initial filter string:" << filter;
 
+    // 打印完整的过滤条件
+    qDebug() << "Final filter string:" << filter;
+
+    // 调用数据库实例的搜索方法
+    IDatabase::getInstance().search(filter);
+    ui->totalAndCurrent->setText("第1页");
 }
 
 
 void DoctorView::on_btAdd_clicked()
 {
+    int curIndex=IDatabase::getInstance().addNewDoctor();
 
+    qDebug()<<curIndex;
+
+    emit goDoctorEditView(curIndex);
 }
 
 
@@ -56,7 +68,7 @@ void DoctorView::on_btEdit_clicked()
     //获取当前行号
     QModelIndex curIndex=IDatabase::getInstance().selection->currentIndex();
 
-    // emit goPatientEditView(curIndex.row());
+    emit goDoctorEditView(curIndex.row());
 }
 
 
@@ -83,5 +95,17 @@ void DoctorView::on_btNext_clicked()
         ui->totalAndCurrent->setText(QString("第 %1 页")
                                      .arg(iDatabase.currentPage + 1));
     }
+}
+
+
+void DoctorView::on_btImport_clicked()
+{
+    IDatabase::getInstance().importData();
+}
+
+
+void DoctorView::on_btExport_clicked()
+{
+    IDatabase::getInstance().exportData();
 }
 

@@ -63,15 +63,30 @@ void MasterViw::goWelcomeView(const QString &type)
 
 }
 
+//医生相关操作
 void MasterViw::goDoctorView()
 {
     qDebug() << "跳转到医生页面";
 
     doctorView=new DoctorView(this);
     pushWidgetToStackView(doctorView);
+    connect(doctorView, &DoctorView::goDoctorEditView, this, &MasterViw::goDoctorEditView);;
+
+}
+
+void MasterViw::goDoctorEditView(int rowNo)
+{
+    qDebug() << "跳转到医生编辑页面";
+
+    doctorEditView=new DoctorEditView(this,rowNo);
+    pushWidgetToStackView(doctorEditView);
+
+    connect(doctorEditView, &DoctorEditView::goPreviousView, this, &MasterViw::goPreviousView);
+
 }
 
 
+//患者相关操作
 void MasterViw::goPatientEditView(int rowNo)
 {
     qDebug() << "跳转到患者编辑页面";
@@ -89,6 +104,7 @@ void MasterViw::goPatientView()
 
     patientView=new PatientView(this);
     pushWidgetToStackView(patientView);;
+
     connect(patientView, &PatientView::goPatientEditView, this, &MasterViw::goPatientEditView);;
 
 }
@@ -107,8 +123,24 @@ void MasterViw::goDrugView()
 
     drugView=new DrugView(this);
     pushWidgetToStackView(drugView);
+
+    connect(drugView, &DrugView::goDrugEditView, this, &MasterViw::goDrugEditView);;
+
 }
 
+void MasterViw::goDrugEditView(int rowNo)
+{
+    qDebug() << "跳转到药品编辑页面";
+
+    drugEditView=new DrugEditView(this,rowNo);
+    pushWidgetToStackView(drugEditView);
+
+    connect(drugEditView, &DrugEditView::goPreviousView, this, &MasterViw::goPreviousView);
+
+}
+
+
+//通用操作
 void MasterViw::goPreviousView()
 {
     qDebug() << "跳转到前一个";
