@@ -115,6 +115,19 @@ void MasterViw::goMedicalRecordView()
 
     medicalRecordView=new MedicalRecordView(this);
     pushWidgetToStackView(medicalRecordView);
+
+    connect(medicalRecordView, &MedicalRecordView::goMedicalRecordEditView, this, &MasterViw::goMedicalRecordEditView);;
+
+}
+
+void MasterViw::goMedicalRecordEditView(int rowNo)
+{
+    qDebug() << "跳转到药品编辑页面";
+
+    medicalRecordEditView=new MedicalRecordEditView(this,rowNo);
+    pushWidgetToStackView(medicalRecordEditView);
+
+    connect(medicalRecordEditView, &MedicalRecordEditView::goPreviousView, this, &MasterViw::goPreviousView);
 }
 
 void MasterViw::goDrugView()

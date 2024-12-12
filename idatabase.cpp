@@ -24,6 +24,7 @@ void IDatabase::initDatabase()
 
 bool IDatabase::initPatientModel()
 {
+    filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("patient");
     //设置数据保存方式，按行还是按列
@@ -59,6 +60,7 @@ bool IDatabase::initPatientModel()
 
 bool IDatabase::initDocotorModel()
 {
+    filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("doctor");
     //设置数据保存方式，按行还是按列
@@ -113,6 +115,7 @@ int IDatabase::addNewDoctor()
 
 bool IDatabase::initDrugModel()
 {
+    filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("drug");
     //设置数据保存方式，按行还是按列
@@ -162,6 +165,7 @@ int IDatabase::addNewDrug()
 
 bool IDatabase::initMedicalRecordModel()
 {
+    filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("medicalrecord");
     //设置数据保存方式，按行还是按列
@@ -176,7 +180,7 @@ bool IDatabase::initMedicalRecordModel()
     tabModel->setHeaderData(tabModel->fieldIndex("ID"), Qt::Horizontal, "编号");
     tabModel->setHeaderData(tabModel->fieldIndex("PATIENTNAME"), Qt::Horizontal, "患者");
     tabModel->setHeaderData(tabModel->fieldIndex("DOCTORNAME"), Qt::Horizontal, "医生");
-    tabModel->setHeaderData(tabModel->fieldIndex("DATE"), Qt::Horizontal, "日期");
+    tabModel->setHeaderData(tabModel->fieldIndex("DATE"), Qt::Horizontal, "就诊日期");
     tabModel->setHeaderData(tabModel->fieldIndex("RESULT"), Qt::Horizontal, "就诊");
     tabModel->setHeaderData(tabModel->fieldIndex("DRUG"), Qt::Horizontal, "开药");
 
@@ -188,6 +192,24 @@ bool IDatabase::initMedicalRecordModel()
     currentPage = 0; // 初始页码为0
 
     return loadPageData();
+}
+
+int IDatabase::addNewMedicalRecord()
+{
+    //在末尾添加一个记录
+    tabModel->insertRow(tabModel->rowCount(),QModelIndex());
+    //创建最后一行的MOdelIndex
+    QModelIndex curIndex=tabModel->index(tabModel->rowCount()-1,1);
+
+    int curRecNo=curIndex.row();
+    QSqlRecord curRec=tabModel->record(curRecNo);
+
+    curRec.setValue("ID",QUuid::createUuid().toString(QUuid::WithBraces));
+    curRec.setValue("Date",QDateTime::currentDateTime().toString("yyyy-MM-dd"));
+
+    tabModel->setRecord(curRecNo,curRec);
+
+    return curIndex.row();
 }
 
 bool IDatabase::search(QString filter)
@@ -305,7 +327,7 @@ bool IDatabase::loadPageData() {
         countQueryStr = QString("SELECT COUNT(*) FROM %1")
                 .arg(tableName);
     } else {
-        countQueryStr = QString("SELECT COUNT(*) FROM %2 WHERE %1")
+        countQueryStr = QString("SELECT COUNT(*) FROM %1 WHERE %2")
                 .arg(tableName)
                 .arg(filter);
     }

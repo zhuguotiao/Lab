@@ -87,6 +87,7 @@ public:
 
     //2.就诊记录管理相关
     bool initMedicalRecordModel();
+    int addNewMedicalRecord();
 
 };
 

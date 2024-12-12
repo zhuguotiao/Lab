@@ -35,15 +35,37 @@ DoctorView::~DoctorView()
 
 void DoctorView::on_btSearch_clicked()
 {
-    QString filter = QString("name LIKE '%%1%'").arg(ui->textSearch->text()); // 基础过滤条件
-    qDebug() << "Initial filter string:" << filter;
+    QString baseFilter = QString("name LIKE '%%1%'").arg(ui->textSearch->text()); // 基础过滤条件
+       qDebug() << "Initial filter string:" << baseFilter;
 
-    // 打印完整的过滤条件
-    qDebug() << "Final filter string:" << filter;
+       // 获取排序条件
+       QString orderClause;
+       QString selectedOrder = ui->orderCombo->currentText();
+        qDebug() <<  selectedOrder;
+       if (selectedOrder == "按年龄顺序") {
+           orderClause = "ORDER BY age ASC";
+       } else if (selectedOrder == "按年龄逆序") {
+           orderClause = "ORDER BY age DESC";
+       } else if (selectedOrder == "按职称顺序") {
+           orderClause = "ORDER BY position ASC";
+       } else if (selectedOrder == "按职称逆序") {
+           orderClause = "ORDER BY position DESC";
+       } else {
+           orderClause = ""; // 默认不排序
+       }
 
-    // 调用数据库实例的搜索方法
-    IDatabase::getInstance().search(filter);
-    ui->totalAndCurrent->setText("第1页");
+       // 拼接最终的过滤条件
+       QString filter = baseFilter;
+       if (!orderClause.isEmpty()) {
+           filter += " " + orderClause;
+       }
+
+       // 打印完整的过滤条件
+       qDebug() << "Final filter string:" << filter;
+
+       // 调用数据库实例的搜索方法
+       IDatabase::getInstance().search(filter);
+       ui->totalAndCurrent->setText("第1页");
 }
 
 

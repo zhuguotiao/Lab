@@ -61,13 +61,39 @@ void MedicalRecordView::on_btNext_clicked()
 
 void MedicalRecordView::on_btSearch_clicked()
 {
+    QString filter = QString("patientname LIKE '%%1%'").arg(ui->textSearch->text()); // 基础过滤条件
 
+    qDebug() << "Initial filter string:" << filter;
+    // 获取排序条件
+    QString orderClause;
+    QString selectedOrder = ui->orderCombo->currentText();
+     qDebug() <<  selectedOrder;
+    if (selectedOrder == "按日期升序") {
+        orderClause = "ORDER BY date ASC";
+    } else if (selectedOrder == "按日期降序") {
+        orderClause = "ORDER BY date DESC";
+    }else {
+        orderClause = ""; // 默认不排序
+    }
+
+    if (!orderClause.isEmpty()) {
+        filter += " " + orderClause;
+    }
+
+    // 打印完整的过滤条件
+    qDebug() << "Final filter string:" << filter;
+
+    // 调用数据库实例的搜索方法
+    IDatabase::getInstance().search(filter);
+    ui->totalAndCurrent->setText("第1页");
 }
 
 
 void MedicalRecordView::on_btAdd_clicked()
 {
-
+    int curIndex=IDatabase::getInstance().addNewMedicalRecord();
+    qDebug()<<curIndex;
+    emit goMedicalRecordEditView(curIndex);
 }
 
 
@@ -79,6 +105,16 @@ void MedicalRecordView::on_btDelete_clicked()
 
 void MedicalRecordView::on_btEdit_clicked()
 {
+    //获取当前行号
+    QModelIndex curIndex=IDatabase::getInstance().selection->currentIndex();
+
+    emit goMedicalRecordEditView(curIndex.row());
+}
+
+
+void MedicalRecordView::on_btExport_clicked()
+{
+    IDatabase::getInstance().exportData();
 
 }
 

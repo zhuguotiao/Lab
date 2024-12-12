@@ -65,7 +65,33 @@ void DrugView::on_btNext_clicked()
 
 void DrugView::on_btSearch_clicked()
 {
+    QString baseFilter = QString("name LIKE '%%1%'").arg(ui->textSearch->text()); // 基础过滤条件
+       qDebug() << "Initial filter string:" << baseFilter;
 
+       // 获取排序条件
+       QString orderClause;
+       QString selectedOrder = ui->orderCombo->currentText();
+        qDebug() <<  selectedOrder;
+       if (selectedOrder == "按库存顺序") {
+           orderClause = "ORDER BY inventory ASC";
+       } else if (selectedOrder == "按库存逆序") {
+           orderClause = "ORDER BY inventory DESC";
+       } else {
+           orderClause = ""; // 默认不排序
+       }
+
+       // 拼接最终的过滤条件
+       QString filter = baseFilter;
+       if (!orderClause.isEmpty()) {
+           filter += " " + orderClause;
+       }
+
+       // 打印完整的过滤条件
+       qDebug() << "Final filter string:" << filter;
+
+       // 调用数据库实例的搜索方法
+       IDatabase::getInstance().search(filter);
+       ui->totalAndCurrent->setText("第1页");
 }
 
 
@@ -91,5 +117,17 @@ void DrugView::on_btEdit_clicked()
     QModelIndex curIndex=IDatabase::getInstance().selection->currentIndex();
 
     emit goDrugEditView(curIndex.row());
+}
+
+
+void DrugView::on_btImport_clicked()
+{
+    IDatabase::getInstance().importData();
+}
+
+
+void DrugView::on_btExport_clicked()
+{
+    IDatabase::getInstance().exportData();
 }
 

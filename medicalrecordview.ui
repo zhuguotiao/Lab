@@ -6,18 +6,56 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>660</width>
+    <height>311</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>就诊记录管理</string>
   </property>
-<layout class="QVBoxLayout" name="verticalLayout">
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget {
+        background-color: #f9f9f9;
+        font-family: &quot;Arial&quot;, sans-serif;
+        color: #333;
+    }
+    QLineEdit {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    QPushButton {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 15px;
+    }
+    QPushButton:hover {
+        background-color: #0056b3;
+    }
+    QTableView {
+        border: 1px solid #ddd;
+        background-color: white;
+        gridline-color: #eee;
+        selection-background-color: #cce5ff;
+        selection-color: #000;
+    }
+    QLabel {
+        font-size: 14px;
+    }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="textSearch">
+       <property name="placeholderText">
+        <string>根据病人名字查询</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="btSearch">
@@ -27,30 +65,119 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btAdd">
-       <property name="text">
-        <string>添加</string>
+      <widget class="QComboBox" name="orderCombo">
+       <property name="styleSheet">
+        <string notr="true">QComboBox {
+          background-color: #f4f4f4;
+          border-radius: 5px;
+          padding: 5px;
+         }
+        </string>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btDelete">
-       <property name="text">
-        <string>删除</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btEdit">
-       <property name="text">
-        <string>修改</string>
-       </property>
+       <item>
+        <property name="text">
+         <string>按日期升序</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>按日期降序</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QTableView" name="tableView"/>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btAdd">
+           <property name="text">
+            <string>添加</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="btEdit">
+           <property name="text">
+            <string>修改</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="btDelete">
+           <property name="text">
+            <string>删除</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="btExport">
+           <property name="text">
+            <string>导出</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTableView" name="tableView">
+       <property name="styleSheet">
+        <string notr="true"> QTableView {
+        border: 1px solid #dcdcdc;
+        border-radius: 5px;
+        background-color: #fafafa;
+       }
+       QTableView::item {
+        padding: 8px;
+       }
+       QTableView::horizontalHeader {
+        background-color: #2196F3;
+        color: white;
+       }
+       QTableView::verticalHeader {
+        background-color: #f0f0f0;
+       }
+       QTableView::item:selected {
+        background-color: #4CAF50;
+        color: white;
+       }</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">

@@ -11,6 +11,7 @@
 #include "drugview.h"
 #include "doctoreditview.h"
 #include "drugeditview.h"
+#include "medicalrecordeditview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MasterViw; }
@@ -37,6 +38,7 @@ public:
     void goPatientView();
 
     void goMedicalRecordView();
+    void goMedicalRecordEditView(int rowNo);
 
     void goDrugView();
     void goDrugEditView(int rowNo);
@@ -68,6 +70,7 @@ private:
     WelcomeView *welcomeView;
 
     MedicalRecordView *medicalRecordView;
+    MedicalRecordEditView *medicalRecordEditView;
 
     DrugView *drugView;
     DrugEditView *drugEditView;

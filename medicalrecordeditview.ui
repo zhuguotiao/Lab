@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DrugEditView</class>
- <widget class="QWidget" name="DrugEditView">
+ <class>MedicalRecordEditView</class>
+ <widget class="QWidget" name="MedicalRecordEditView">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>500</height>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Doctor Information Editor</string>
+   <string>Form</string>
   </property>
   <property name="styleSheet">
    <string notr="true">
@@ -30,6 +30,12 @@
 
     /* 设置 QLineEdit 的样式 */
     QLineEdit {
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding: 4px;
+        background: #ffffff;
+    }
+ QPlainTextEdit {
         border: 1px solid #cccccc;
         border-radius: 4px;
         padding: 4px;
@@ -79,7 +85,7 @@
    <item>
     <layout class="QFormLayout" name="formLayout">
      <item row="0" column="0">
-      <widget class="QLabel" name="label_id">
+      <widget class="QLabel" name="label">
        <property name="text">
         <string>编号：</string>
        </property>
@@ -89,71 +95,70 @@
       <widget class="QLineEdit" name="dbEditID"/>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="label_name">
+      <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>名称</string>
+        <string>患者姓名：</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="dbEditName"/>
+      <widget class="QLineEdit" name="dbEditPatientName"/>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="label_sex">
+      <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>剂量</string>
+        <string>主治医生：</string>
        </property>
       </widget>
      </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="dbEditDoctorName"/>
+     </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="label_age">
+      <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>类型</string>
+        <string>诊断结果：</string>
        </property>
       </widget>
      </item>
      <item row="4" column="0">
-      <widget class="QLabel" name="label_phone">
+      <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>库存</string>
+        <string>开具药品：</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="dbEditInventory"/>
-     </item>
-     <item row="3" column="1">
-      <widget class="QComboBox" name="dbComboType">
-       <item>
-        <property name="text">
-         <string>处方</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>非处方</string>
-        </property>
-       </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>就诊日期：</string>
+       </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="dbEditDose"/>
+     <item row="5" column="1">
+      <widget class="QDateEdit" name="dbEditDate"/>
+     </item>
+     <item row="3" column="1">
+      <widget class="QPlainTextEdit" name="dbEditResult"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPlainTextEdit" name="dbEditDrug"/>
      </item>
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="buttonLayout">
-     <item>
-      <widget class="QPushButton" name="btSave">
-       <property name="text">
-        <string>保存</string>
-       </property>
-      </widget>
-     </item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="btCancel">
        <property name="text">
         <string>取消</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btSave">
+       <property name="text">
+        <string>保存</string>
        </property>
       </widget>
      </item>
