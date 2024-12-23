@@ -27,3 +27,9 @@ void LoginView::on_btSignIn_clicked()
 
 }
 
+
+void LoginView::on_btReserve_clicked()
+{
+    emit reserve();
+}
+

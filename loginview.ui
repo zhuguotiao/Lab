@@ -103,9 +103,9 @@
    <item>
     <layout class="QHBoxLayout" name="buttonLayout">
      <item>
-      <widget class="QPushButton" name="btSignUp">
+      <widget class="QPushButton" name="btReserve">
        <property name="text">
-        <string>注册</string>
+        <string>预约</string>
        </property>
       </widget>
      </item>

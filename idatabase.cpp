@@ -19,7 +19,6 @@ void IDatabase::initDatabase()
      }else{
         qDebug()<<"open database successfully";
     }
-
 }
 
 bool IDatabase::initPatientModel()
@@ -78,7 +77,7 @@ bool IDatabase::initDocotorModel()
     tabModel->setHeaderData(tabModel->fieldIndex("ID_CARD"), Qt::Horizontal, "身份证");
 
     tabModel->setHeaderData(tabModel->fieldIndex("SEX"), Qt::Horizontal, "性别");
-    tabModel->setHeaderData(tabModel->fieldIndex("PHONE"), Qt::Horizontal, "电话");
+    tabModel->setHeaderData(tabModel->fieldIndex("EMAIL"), Qt::Horizontal, "邮箱");
     tabModel->setHeaderData(tabModel->fieldIndex("PRACTICINGCERTIFICATE"), Qt::Horizontal, "执业证书");
     tabModel->setHeaderData(tabModel->fieldIndex("POSITION"), Qt::Horizontal, "职称");
 
@@ -211,6 +210,65 @@ int IDatabase::addNewMedicalRecord()
 
     return curIndex.row();
 }
+
+bool IDatabase::insertReservation(const QString &doctor, const QDate &date, const QTime &time, const QString &patientName, const QString &patientEmail)
+{
+    if (!database.isOpen()) {
+        qDebug() << "Database is not open!";
+        return false;
+    }
+
+    QSqlQuery query(database);
+    query.prepare("INSERT INTO reserve (doctor_name, date, time, patient_name, patient_email) "
+                  "VALUES (:doctor, :date, :time, :patient_name, :patient_email)");
+
+    query.bindValue(":doctor", doctor);  // 修正占位符为 :doctor
+    query.bindValue(":date", date.toString("yyyy-MM-dd"));
+    query.bindValue(":time", time.toString("HH:mm:ss"));
+    query.bindValue(":patient_name", patientName);
+    query.bindValue(":patient_email", patientEmail);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to insert reservation:" << query.lastError().text();
+        return false;
+    }
+
+    return true;
+}
+
+bool IDatabase::initReserveModel()
+{
+    filter="";
+    tabModel=new QSqlTableModel(this,database);
+    tabModel->setTable("reserve");
+    qDebug()<<"reserve";
+    //设置数据保存方式，按行还是按列
+    tabModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    //设置排序方式
+    tabModel->setSort(tabModel->fieldIndex("name"),Qt::AscendingOrder);
+    if(!(tabModel->select()))
+        return false;
+
+    tableName="reserve";
+    // 设置列标题（中文）
+    tabModel->setHeaderData(tabModel->fieldIndex("id"), Qt::Horizontal, "编号");
+    tabModel->setHeaderData(tabModel->fieldIndex("patient_name"), Qt::Horizontal, "患者");
+    tabModel->setHeaderData(tabModel->fieldIndex("patient_email"), Qt::Horizontal, "患者邮箱");
+    tabModel->setHeaderData(tabModel->fieldIndex("doctor_name"), Qt::Horizontal, "医生");
+    tabModel->setHeaderData(tabModel->fieldIndex("date"), Qt::Horizontal, "预约日期");
+    tabModel->setHeaderData(tabModel->fieldIndex("time"), Qt::Horizontal, "具体时间");
+    tabModel->setHeaderData(tabModel->fieldIndex("status"), Qt::Horizontal, "状态");
+
+    qDebug()<<tabModel;
+
+    selection=new QItemSelectionModel(tabModel);
+
+    pageSize = 5; // 设置每页数据量
+    currentPage = 0; // 初始页码为0
+
+    return loadPageData();
+}
+
 
 bool IDatabase::search(QString filter)
 {

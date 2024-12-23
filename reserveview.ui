@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ReserveView</class>
+ <widget class="QWidget" name="ReserveView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>660</width>
+    <height>311</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>就诊记录管理</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget {
+        background-color: #f9f9f9;
+        font-family: &quot;Arial&quot;, sans-serif;
+        color: #333;
+    }
+    QLineEdit {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    QPushButton {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 15px;
+    }
+    QPushButton:hover {
+        background-color: #0056b3;
+    }
+    QTableView {
+        border: 1px solid #ddd;
+        background-color: white;
+        gridline-color: #eee;
+        selection-background-color: #cce5ff;
+        selection-color: #000;
+    }
+    QLabel {
+        font-size: 14px;
+    }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="textSearch">
+       <property name="placeholderText">
+        <string>根据病人名字查询</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btSearch">
+       <property name="text">
+        <string>查找</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="orderCombo">
+       <property name="styleSheet">
+        <string notr="true">QComboBox {
+          background-color: #f4f4f4;
+          border-radius: 5px;
+          padding: 5px;
+         }
+        </string>
+       </property>
+       <item>
+        <property name="text">
+         <string>按预约时间降序</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>按预约时间升序</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btEdit">
+       <property name="text">
+        <string>修改</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTableView" name="tableView">
+     <property name="styleSheet">
+      <string notr="true"> QTableView {
+        border: 1px solid #dcdcdc;
+        border-radius: 5px;
+        background-color: #fafafa;
+       }
+       QTableView::item {
+        padding: 8px;
+       }
+       QTableView::horizontalHeader {
+        background-color: #2196F3;
+        color: white;
+       }
+       QTableView::verticalHeader {
+        background-color: #f0f0f0;
+       }
+       QTableView::item:selected {
+        background-color: #4CAF50;
+        color: white;
+       }</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btPrev">
+       <property name="text">
+        <string>上一页</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="totalAndCurrent">
+       <property name="text">
+        <string>第X页</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btNext">
+       <property name="text">
+        <string>下一页</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

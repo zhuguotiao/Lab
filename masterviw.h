@@ -12,6 +12,9 @@
 #include "doctoreditview.h"
 #include "drugeditview.h"
 #include "medicalrecordeditview.h"
+#include "patientreserveview.h"
+#include "reserveview.h"
+#include  "reserveeditview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MasterViw; }
@@ -44,6 +47,11 @@ public:
     void goDrugEditView(int rowNo);
 
 
+    void goPatientReserveView();
+    void goReserveView();
+    void goReserveEditView(int rowNo);
+
+
     void goPreviousView();
 
 private slots:
@@ -74,6 +82,10 @@ private:
 
     DrugView *drugView;
     DrugEditView *drugEditView;
+
+    PatientReserveView *patientReserveView;
+    ReserveView *reserveView;
+    ReserveEditView *reserveEditView;
 
     QString type;
 

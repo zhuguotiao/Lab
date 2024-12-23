@@ -1,13 +1,21 @@
-QT       += core gui sql
+QT       += core gui sql network concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+# Add the library headers and include paths
+INCLUDEPATH += $$PWD/../../SmtpClient-for-Qt-2.0/src
 
+# Add the library path for linking (DLL or static library)
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../SmtpClient-for-Qt-2.0/src/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/release/ -lSmtpMime2
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../SmtpClient-for-Qt-2.0/src/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/debug/ -lSmtpMime2
+else:unix: LIBS += -L$$PWD/../../SmtpClient-for-Qt-2.0/src/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/ -lSmtpMime2
+
+# Ensure the correct path for the dependent files
+DEPENDPATH += $$PWD/../../SmtpClient-for-Qt-2.0/src/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/debug
+
+# Add your project source and header files
 SOURCES += \
     doctoreditview.cpp \
     doctorview.cpp \
@@ -20,7 +28,10 @@ SOURCES += \
     medicalrecordeditview.cpp \
     medicalrecordview.cpp \
     patienteditview.cpp \
+    patientreserveview.cpp \
     patientview.cpp \
+    reserveeditview.cpp \
+    reserveview.cpp \
     welcomeview.cpp
 
 HEADERS += \
@@ -34,7 +45,10 @@ HEADERS += \
     medicalrecordeditview.h \
     medicalrecordview.h \
     patienteditview.h \
+    patientreserveview.h \
     patientview.h \
+    reserveeditview.h \
+    reserveview.h \
     welcomeview.h
 
 FORMS += \
@@ -47,13 +61,17 @@ FORMS += \
     medicalrecordeditview.ui \
     medicalrecordview.ui \
     patienteditview.ui \
+    patientreserveview.ui \
     patientview.ui \
+    reserveeditview.ui \
+    reserveview.ui \
     welcomeview.ui
 
-# Default rules for deployment.
+# Include resources
+RESOURCES += \
+    lab4.qrc
+
+# Deployment rules
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    lab4.qrc

@@ -20,7 +20,7 @@ DoctorEditView::DoctorEditView(QWidget *parent, int index) :
     // 绑定控件到模型字段
     dataMapper->addMapping(ui->dbEditID, tabModel->fieldIndex("ID"));
     dataMapper->addMapping(ui->dbEditName, tabModel->fieldIndex("NAME"));
-    dataMapper->addMapping(ui->dbEditPhone, tabModel->fieldIndex("PHONE"));
+    dataMapper->addMapping(ui->dbEditEmail, tabModel->fieldIndex("EMAIL"));
     dataMapper->addMapping(ui->dbSpinAge, tabModel->fieldIndex("AGE"));
     dataMapper->addMapping(ui->dbComboSex, tabModel->fieldIndex("SEX"));
     dataMapper->addMapping(ui->dbComboxPosition, tabModel->fieldIndex("POSITION"));

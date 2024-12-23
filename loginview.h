@@ -19,9 +19,12 @@ private slots:
     void on_btSignIn_clicked();
 
 
+    void on_btReserve_clicked();
+
 signals:
     void loginSuccess(const QString &message);
     void LoginFailed();
+    void reserve();
 
 private:
     Ui::LoginView *ui;

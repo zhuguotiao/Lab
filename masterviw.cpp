@@ -34,7 +34,8 @@ void MasterViw::goLoginView()
 
     //等待接受登录成功的信号
     //这是新版本的
-    connect(loginView, &LoginView::loginSuccess, this, &MasterViw::goWelcomeView);;
+    connect(loginView, &LoginView::loginSuccess, this, &MasterViw::goWelcomeView);
+    connect(loginView, &LoginView::reserve, this, &MasterViw::goPatientReserveView);
 }
 
 void MasterViw::goWelcomeView(const QString &type)
@@ -56,10 +57,12 @@ void MasterViw::goWelcomeView(const QString &type)
            if (btMedicalRecord) btMedicalRecord->hide();
        }
 
-    connect(welcomeView, &WelcomeView::goDoctorView, this, &MasterViw::goDoctorView);;
-    connect(welcomeView, &WelcomeView::goPatientView, this, &MasterViw::goPatientView);;
-    connect(welcomeView, &WelcomeView::goDrugView, this, &MasterViw::goDrugView);;
-    connect(welcomeView, &WelcomeView::goMedicalRecordView, this, &MasterViw::goMedicalRecordView);;
+    connect(welcomeView, &WelcomeView::goDoctorView, this, &MasterViw::goDoctorView);
+    connect(welcomeView, &WelcomeView::goPatientView, this, &MasterViw::goPatientView);
+    connect(welcomeView, &WelcomeView::goDrugView, this, &MasterViw::goDrugView);
+    connect(welcomeView, &WelcomeView::goMedicalRecordView, this, &MasterViw::goMedicalRecordView);
+    connect(welcomeView, &WelcomeView::goReserveView, this, &MasterViw::goReserveView);
+
 
 }
 
@@ -150,6 +153,37 @@ void MasterViw::goDrugEditView(int rowNo)
 
     connect(drugEditView, &DrugEditView::goPreviousView, this, &MasterViw::goPreviousView);
 
+}
+
+void MasterViw::goPatientReserveView()
+{
+    qDebug() << "跳转到预约页面";
+
+    patientReserveView=new PatientReserveView(this);
+    pushWidgetToStackView(patientReserveView);
+
+
+}
+
+void MasterViw::goReserveView()
+{
+    qDebug() << "跳转到预定信息页面";
+
+    reserveView=new ReserveView(this);
+    pushWidgetToStackView(reserveView);
+
+    connect(reserveView, &ReserveView::goReserveEditView, this, &MasterViw::goReserveEditView);
+
+}
+
+void MasterViw::goReserveEditView(int rowNo)
+{
+    qDebug() << "跳转到预约信息编辑页面";
+
+    reserveEditView=new ReserveEditView(this,rowNo);
+    pushWidgetToStackView(reserveEditView);
+
+    connect(reserveEditView, &ReserveEditView::goPreviousView, this, &MasterViw::goPreviousView);
 }
 
 

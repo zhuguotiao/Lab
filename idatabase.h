@@ -18,6 +18,7 @@ public:
         return instance;
     }
 
+
     QString userLogin(QString username,QString password);
 
 
@@ -26,6 +27,7 @@ private:
     explicit IDatabase(QObject *parent = nullptr);
 
     IDatabase(IDatabase const &) = delete;
+
 
     void operator=(IDatabase const &) =delete;
 
@@ -81,6 +83,8 @@ public:
     bool initDocotorModel();
     int addNewDoctor();
 
+
+
     //3.药品管理相关
     bool initDrugModel();
     int addNewDrug();
@@ -88,6 +92,12 @@ public:
     //2.就诊记录管理相关
     bool initMedicalRecordModel();
     int addNewMedicalRecord();
+
+    //预约相关
+    bool insertReservation(const QString &doctor, const QDate &date, const QTime &time, const QString &patientName, const QString &patientEmail);
+
+    bool initReserveModel();
+
 
 };
 

@@ -26,6 +26,8 @@ private slots:
 
     void on_btMedicalRecord_clicked();
 
+    void on_btReserve_clicked();
+
 signals:
 
     void goDoctorView();
@@ -35,6 +37,8 @@ signals:
     void goDrugView();
 
     void goMedicalRecordView();
+
+    void goReserveView();
 
 private:
     Ui::WelcomeView *ui;

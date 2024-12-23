@@ -1,6 +1,6 @@
 #include "welcomeview.h"
 #include "ui_welcomeview.h"
-#include "QDebug";
+#include "QDebug"
 
 WelcomeView::WelcomeView(QWidget *parent) :
     QWidget(parent),
@@ -38,5 +38,11 @@ void WelcomeView::on_btDrug_clicked()
 void WelcomeView::on_btMedicalRecord_clicked()
 {
     emit goMedicalRecordView();
+}
+
+
+void WelcomeView::on_btReserve_clicked()
+{
+    emit goReserveView();
 }
 

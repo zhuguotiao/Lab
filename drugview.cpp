@@ -72,10 +72,14 @@ void DrugView::on_btSearch_clicked()
        QString orderClause;
        QString selectedOrder = ui->orderCombo->currentText();
         qDebug() <<  selectedOrder;
-       if (selectedOrder == "按库存顺序") {
+       if (selectedOrder == "按库存升序") {
            orderClause = "ORDER BY inventory ASC";
-       } else if (selectedOrder == "按库存逆序") {
+       } else if (selectedOrder == "按库存降序") {
            orderClause = "ORDER BY inventory DESC";
+       }else if (selectedOrder == "按名称降序") {
+           orderClause = "ORDER BY name DESC";
+       }else if (selectedOrder == "按名称升序") {
+           orderClause = "ORDER BY name ASC";
        } else {
            orderClause = ""; // 默认不排序
        }
