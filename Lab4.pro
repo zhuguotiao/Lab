@@ -19,6 +19,8 @@ DEPENDPATH += $$PWD/../../SmtpClient-for-Qt-2.0/src/build/Desktop_Qt_6_7_2_MinGW
 SOURCES += \
     analysisview.cpp \
     doctoreditview.cpp \
+    doctorreporteditview.cpp \
+    doctorreportview.cpp \
     doctorview.cpp \
     drugeditview.cpp \
     drugview.cpp \
@@ -38,6 +40,8 @@ SOURCES += \
 HEADERS += \
     analysisview.h \
     doctoreditview.h \
+    doctorreporteditview.h \
+    doctorreportview.h \
     doctorview.h \
     drugeditview.h \
     drugview.h \
@@ -56,6 +60,8 @@ HEADERS += \
 FORMS += \
     analysisview.ui \
     doctoreditview.ui \
+    doctorreporteditview.ui \
+    doctorreportview.ui \
     doctorview.ui \
     drugeditview.ui \
     drugview.ui \

@@ -64,3 +64,9 @@ void WelcomeView::on_btResume_clicked()
 
 }
 
+
+void WelcomeView::on_btDoctorReport_clicked()
+{
+    emit goDoctorReportView();
+}
+

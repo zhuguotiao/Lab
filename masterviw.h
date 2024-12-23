@@ -16,6 +16,8 @@
 #include "reserveview.h"
 #include  "reserveeditview.h"
 #include "analysisview.h"
+#include "doctorreportview.h"
+#include "doctorreporteditview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MasterViw; }
@@ -28,6 +30,8 @@ class MasterViw : public QWidget
 public:
     MasterViw(QWidget *parent = nullptr);
     ~MasterViw();
+    static QString username;
+
 
 public:
     //页面跳转操作
@@ -54,7 +58,12 @@ public:
 
     void goAnalysisView();
 
+    void goDoctorReportView();
+    void goDoctorReportEditView(int rowNo);
+
+
     void goPreviousView();
+
 
 private slots:
     void on_btBack_clicked();
@@ -92,6 +101,8 @@ private:
     AnalysisView *analysisView;
 
 
+    DoctorReportView *doctorReportView;
+    DoctorReportEditView *doctorReportEditView;
 
     QString type;
 

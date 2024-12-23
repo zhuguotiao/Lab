@@ -75,8 +75,8 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="1">
-      <widget class="QPushButton" name="btPatient">
+     <item row="1" column="0">
+      <widget class="QPushButton" name="btDrug">
        <property name="minimumSize">
         <size>
          <width>100</width>
@@ -84,12 +84,12 @@
         </size>
        </property>
        <property name="text">
-        <string>病人管理</string>
+        <string>药品管理</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QPushButton" name="btDataAnalysis">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="btDoctor">
        <property name="minimumSize">
         <size>
          <width>100</width>
@@ -97,11 +97,11 @@
         </size>
        </property>
        <property name="text">
-        <string>数据分析</string>
+        <string>医生管理</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
+     <item row="1" column="2">
       <widget class="QPushButton" name="btMedicalRecord">
        <property name="minimumSize">
         <size>
@@ -114,8 +114,8 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="btDrug">
+     <item row="2" column="2">
+      <widget class="QPushButton" name="btDataAnalysis">
        <property name="minimumSize">
         <size>
          <width>100</width>
@@ -123,7 +123,20 @@
         </size>
        </property>
        <property name="text">
-        <string>药品管理</string>
+        <string>数据分析</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="btPatient">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>病人管理</string>
        </property>
       </widget>
      </item>
@@ -140,8 +153,14 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="btDoctor">
+     <item row="1" column="1">
+      <widget class="QPushButton" name="btDoctorReport">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
          <width>100</width>
@@ -149,7 +168,7 @@
         </size>
        </property>
        <property name="text">
-        <string>医生管理</string>
+        <string>工作报告</string>
        </property>
       </widget>
      </item>

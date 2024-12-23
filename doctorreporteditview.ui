@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DoctorReportEditView</class>
+ <widget class="QWidget" name="DoctorReportEditView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>编辑医生报告</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    /* 设置背景颜色和字体样式 */
+    QWidget {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+    }
+
+    /* 设置 QLabel 的样式 */
+    QLabel {
+        color: #333333;
+        font-weight: bold;
+    }
+
+    /* 设置 QLineEdit 的样式 */
+    QLineEdit {
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding: 4px;
+        background: #ffffff;
+    }
+
+    /* 设置 QComboBox 的样式 */
+    QComboBox {
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding: 4px;
+        background: #ffffff;
+    }
+
+    /* 设置 QSpinBox 的样式 */
+    QSpinBox {
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding: 4px;
+        background: #ffffff;
+    }
+
+    /* 设置 QPushButton 的样式 */
+    QPushButton {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    QPushButton:hover {
+        background-color: #45a049;
+    }
+
+    QPushButton#button_cancel {
+        background-color: #f44336;
+    }
+
+    QPushButton#button_cancel:hover {
+        background-color: #d32f2f;
+    }
+   </string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="labelPatientFeedback_2">
+     <property name="text">
+      <string>编号</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="dbEditID">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="labelDoctorName">
+     <property name="text">
+      <string>医生姓名：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="dbEditDoctorName">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="labelPatientName">
+     <property name="text">
+      <string>患者姓名：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="dbComboPatientName"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="labelConsultationStatus">
+     <property name="text">
+      <string>就诊情况：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="dbEditConsultation"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="labelTreatmentEffect">
+     <property name="text">
+      <string>治疗效果：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="dbEditTreatmentEffect"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="labelPatientFeedback">
+     <property name="text">
+      <string>患者反馈：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="dbEditPatientFeedback"/>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="labelPatientFeedback_3">
+     <property name="text">
+      <string>创建时间</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QDateEdit" name="dbEditcCreateTime"/>
+   </item>
+   <item row="7" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>419</width>
+       <height>145</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>20</number>
+     </property>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btCancel">
+       <property name="text">
+        <string>取消</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btSave">
+       <property name="text">
+        <string>保存</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -2,11 +2,17 @@
 #include "ui_masterviw.h"
 #include <QDebug>
 #include "idatabase.h"
+#include "MasterViw.h"
+
+// 静态成员变量的定义
+QString MasterViw::username;
+
 
 MasterViw::MasterViw(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::MasterViw)
 {
+
     ui->setupUi(this);
 
     // 设置登录页面的边框边框
@@ -14,6 +20,7 @@ MasterViw::MasterViw(QWidget *parent)
 
     //初始化跳转到登录页面
     goLoginView();
+
 
     IDatabase::getInstance();
 
@@ -63,6 +70,8 @@ void MasterViw::goWelcomeView(const QString &type)
     connect(welcomeView, &WelcomeView::goMedicalRecordView, this, &MasterViw::goMedicalRecordView);
     connect(welcomeView, &WelcomeView::goReserveView, this, &MasterViw::goReserveView);
     connect(welcomeView, &WelcomeView::goAnalysisView, this, &MasterViw::goAnalysisView);
+    connect(welcomeView, &WelcomeView::goDoctorReportView, this, &MasterViw::goDoctorReportView);
+
 
 
 
@@ -195,6 +204,27 @@ void MasterViw::goAnalysisView()
     analysisView=new AnalysisView(this);
     pushWidgetToStackView(analysisView);
 
+}
+
+void MasterViw::goDoctorReportView()
+{
+    qDebug() << "跳转到数据分析页面";
+
+    doctorReportView=new DoctorReportView(this);
+    pushWidgetToStackView(doctorReportView);
+
+    connect(doctorReportView, &DoctorReportView::goDoctorReportEditView, this, &MasterViw::goDoctorReportEditView);
+
+}
+
+void MasterViw::goDoctorReportEditView(int rowNo)
+{
+    qDebug() << "跳转到预约信息编辑页面";
+
+    doctorReportEditView=new DoctorReportEditView(this,rowNo);
+    pushWidgetToStackView(doctorReportEditView);
+
+    connect(doctorReportEditView, &DoctorReportEditView::goPreviousView, this, &MasterViw::goPreviousView);
 }
 
 

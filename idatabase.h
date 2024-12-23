@@ -63,7 +63,7 @@ public:
     //通用操作
     //查找函数
     bool search(QString filter);
-    //删除患者
+    //删除，提交，撤销
     bool deleteCurrent();
     bool submitEdit();
     void revertEdit();
@@ -96,6 +96,10 @@ public:
     //预约相关
     bool insertReservation(const QString &doctor, const QDate &date, const QTime &time, const QString &patientName, const QString &patientEmail);
 
+
+    //工作报告
+    bool initDocotorReportModel();
+     int   addNewDoctorReport();
     bool initReserveModel();
 
 

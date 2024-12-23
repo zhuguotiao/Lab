@@ -142,18 +142,18 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="buttonLayout">
-     <item>
-      <widget class="QPushButton" name="btSave">
-       <property name="text">
-        <string>保存</string>
-       </property>
-      </widget>
-     </item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="btCancel">
        <property name="text">
         <string>取消</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btSave">
+       <property name="text">
+        <string>保存</string>
        </property>
       </widget>
      </item>

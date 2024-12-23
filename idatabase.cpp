@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QSqlQuery>
 #include <QDebug>
+#include "masterviw.h"
 
 void IDatabase::initDatabase()
 {
@@ -236,6 +237,60 @@ bool IDatabase::insertReservation(const QString &doctor, const QDate &date, cons
     return true;
 }
 
+bool IDatabase::initDocotorReportModel()
+{
+    filter="";
+    tabModel=new QSqlTableModel(this,database);
+    tabModel->setTable("doctorreport");
+    //设置数据保存方式，按行还是按列
+    tabModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    //设置排序方式
+    tabModel->setSort(tabModel->fieldIndex("name"),Qt::AscendingOrder);
+    if(!(tabModel->select()))
+        return false;
+
+    tableName="doctorreport";
+    // 设置列标题（中文）
+    tabModel->setHeaderData(tabModel->fieldIndex("ID"), Qt::Horizontal, "编号");
+    tabModel->setHeaderData(tabModel->fieldIndex("PATIENTNAME"), Qt::Horizontal, "患者");
+    tabModel->setHeaderData(tabModel->fieldIndex("DOCTORNAME"), Qt::Horizontal, "医生");
+    tabModel->setHeaderData(tabModel->fieldIndex("CREATETIME"), Qt::Horizontal, "创建时间");
+    tabModel->setHeaderData(tabModel->fieldIndex("CONSULTATION"), Qt::Horizontal, "就诊记录");
+    tabModel->setHeaderData(tabModel->fieldIndex("TREATMENTEFFECT"), Qt::Horizontal, "治疗效果");
+    tabModel->setHeaderData(tabModel->fieldIndex("PATIENTFEEDBACK"), Qt::Horizontal, "病人反馈");
+
+
+    qDebug()<<tabModel;
+
+    selection=new QItemSelectionModel(tabModel);
+
+    pageSize = 5; // 设置每页数据量
+    currentPage = 0; // 初始页码为0
+
+    return loadPageData();
+}
+
+int IDatabase::addNewDoctorReport()
+{
+    //在末尾添加一个记录
+    tabModel->insertRow(tabModel->rowCount(),QModelIndex());
+    //创建最后一行的MOdelIndex
+    QModelIndex curIndex=tabModel->index(tabModel->rowCount()-1,1);
+
+    int curRecNo=curIndex.row();
+    QSqlRecord curRec=tabModel->record(curRecNo);
+
+    curRec.setValue("CREATETIME",QDateTime::currentDateTime().toString("yyyy-MM-dd"));
+    curRec.setValue("DOCTORNAME",MasterViw::username);
+    curRec.setValue("ID",QUuid::createUuid().toString(QUuid::WithBraces));
+    curRec.setValue("DOCTORNAME",MasterViw::username);
+
+
+    tabModel->setRecord(curRecNo,curRec);
+
+    return curIndex.row();
+}
+
 bool IDatabase::initReserveModel()
 {
     filter="";
@@ -324,12 +379,14 @@ int IDatabase::addNewPatient()
 QString IDatabase::userLogin(QString username, QString password)
 {
     QSqlQuery query;
-    query.prepare("select username,password,type from user where username= :USER");
+    query.prepare("select username,password,type,fullname from user where username= :USER");
     query.bindValue(":USER",username);
     query.exec();
     if(query.first() && query.value("username").isValid()){
         QString passwd=query.value("password").toString();
         if(passwd==password){
+            MasterViw::username=query.value("fullname").toString();
+            qDebug()<<MasterViw::username;
             return query.value("type").toString();
         }else{
             qDebug()<< "wrongPassword";

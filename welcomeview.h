@@ -34,6 +34,8 @@ private slots:
 
     void on_btResume_clicked();
 
+    void on_btDoctorReport_clicked();
+
 signals:
 
     void goDoctorView();
@@ -47,6 +49,8 @@ signals:
     void goReserveView();
 
     void goAnalysisView();
+
+    void goDoctorReportView();
 
 private:
     Ui::WelcomeView *ui;
