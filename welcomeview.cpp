@@ -46,3 +46,21 @@ void WelcomeView::on_btReserve_clicked()
     emit goReserveView();
 }
 
+
+void WelcomeView::on_btDataAnalysis_clicked()
+{
+    emit goAnalysisView();
+}
+
+
+void WelcomeView::on_btSave_clicked()
+{
+
+}
+
+
+void WelcomeView::on_btResume_clicked()
+{
+
+}
+

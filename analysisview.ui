@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AnalysisView</class>
+ <widget class="QWidget" name="AnalysisView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>547</width>
+    <height>379</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>数据统计分析</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="doctorTab">
+      <attribute name="title">
+       <string>医生职称</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="doctorLayout">
+       <item>
+        <widget class="QChartView" name="doctorChart" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="patientTab">
+      <attribute name="title">
+       <string>病人信息</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="patientLayout">
+       <item>
+        <widget class="QChartView" name="patientChart" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="medicineTab">
+      <attribute name="title">
+       <string>药品种类</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="medicineLayout">
+       <item>
+        <widget class="QChartView" name="drugChart" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="visitTab">
+      <attribute name="title">
+       <string>就诊人数</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="visitLayout">
+       <item>
+        <widget class="QChartView" name="medicalRecordChart" native="true"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QWidget</extends>
+   <header>qchartview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

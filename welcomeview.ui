@@ -14,104 +14,45 @@
    <string>欢迎</string>
   </property>
   <property name="styleSheet">
-   <string>
-    QWidget {
-        background-color: #eaf3fa;
-        font-family: &quot;Arial&quot;, sans-serif;
-        color: #333;
-    }
-    QPushButton {
-        background-color: #007bff;
-        color: white;
-        font-size: 14px;
-        border: none;
-        border-radius: 8px;
-        padding: 10px 20px;
-        margin: 5px;
-    }
+   <string notr="true">
+  
+
     QPushButton:hover {
-        background-color: #0056b3;
+        background-color: #f0f0f0;
     }
-    QLabel {
-        font-size: 16px;
-        color: #333;
-    }
-    QSpacerItem {
-        height: 20px;
-    }
+  
+    
    </string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Orientation::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>60</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="btDoctor">
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>60</height>
-          </size>
-         </property>
+        <widget class="QPushButton" name="btSave">
          <property name="text">
-          <string>医生管理</string>
+          <string>备份</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btPatient">
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>60</height>
-          </size>
-         </property>
+        <widget class="QPushButton" name="btResume">
          <property name="text">
-          <string>病人管理</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QPushButton" name="btDrug">
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>药品管理</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btMedicalRecord">
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>就诊管理</string>
+          <string>恢复</string>
          </property>
         </widget>
        </item>
@@ -120,18 +61,95 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>79</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="1">
+      <widget class="QPushButton" name="btPatient">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>病人管理</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="btDataAnalysis">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>数据分析</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="btMedicalRecord">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>就诊管理</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="btDrug">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>药品管理</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
       <widget class="QPushButton" name="btReserve">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>60</height>
+        </size>
+       </property>
        <property name="text">
         <string>预约信息处理</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="btDoctor">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>60</height>
+        </size>
+       </property>
        <property name="text">
-        <string>PushButton</string>
+        <string>医生管理</string>
        </property>
       </widget>
      </item>

@@ -1,4 +1,4 @@
-QT       += core gui sql network concurrent
+QT       += core gui sql network concurrent charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,6 +17,7 @@ DEPENDPATH += $$PWD/../../SmtpClient-for-Qt-2.0/src/build/Desktop_Qt_6_7_2_MinGW
 
 # Add your project source and header files
 SOURCES += \
+    analysisview.cpp \
     doctoreditview.cpp \
     doctorview.cpp \
     drugeditview.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
     welcomeview.cpp
 
 HEADERS += \
+    analysisview.h \
     doctoreditview.h \
     doctorview.h \
     drugeditview.h \
@@ -52,6 +54,7 @@ HEADERS += \
     welcomeview.h
 
 FORMS += \
+    analysisview.ui \
     doctoreditview.ui \
     doctorview.ui \
     drugeditview.ui \

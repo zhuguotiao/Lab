@@ -62,6 +62,8 @@ void MasterViw::goWelcomeView(const QString &type)
     connect(welcomeView, &WelcomeView::goDrugView, this, &MasterViw::goDrugView);
     connect(welcomeView, &WelcomeView::goMedicalRecordView, this, &MasterViw::goMedicalRecordView);
     connect(welcomeView, &WelcomeView::goReserveView, this, &MasterViw::goReserveView);
+    connect(welcomeView, &WelcomeView::goAnalysisView, this, &MasterViw::goAnalysisView);
+
 
 
 }
@@ -184,6 +186,15 @@ void MasterViw::goReserveEditView(int rowNo)
     pushWidgetToStackView(reserveEditView);
 
     connect(reserveEditView, &ReserveEditView::goPreviousView, this, &MasterViw::goPreviousView);
+}
+
+void MasterViw::goAnalysisView()
+{
+    qDebug() << "跳转到数据分析页面";
+
+    analysisView=new AnalysisView(this);
+    pushWidgetToStackView(analysisView);
+
 }
 
 

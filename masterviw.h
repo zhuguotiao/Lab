@@ -15,6 +15,7 @@
 #include "patientreserveview.h"
 #include "reserveview.h"
 #include  "reserveeditview.h"
+#include "analysisview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MasterViw; }
@@ -51,6 +52,7 @@ public:
     void goReserveView();
     void goReserveEditView(int rowNo);
 
+    void goAnalysisView();
 
     void goPreviousView();
 
@@ -86,6 +88,10 @@ private:
     PatientReserveView *patientReserveView;
     ReserveView *reserveView;
     ReserveEditView *reserveEditView;
+
+    AnalysisView *analysisView;
+
+
 
     QString type;
 
