@@ -13,6 +13,45 @@
   <property name="windowTitle">
    <string>药品管理</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget {
+        background-color: #f9f9f9;
+        font-family: &quot;Arial&quot;, sans-serif;
+        color: #333;
+    }
+    QLineEdit {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+    }
+	QComboBox{
+		background-color: #fafafa;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px 15px;
+	}
+    QPushButton {
+        background-color: #fafafa;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px 15px;
+    }
+    QPushButton:hover {
+        background-color: #f3f3f3;
+    }
+    QTableView {
+        border: 1px solid #ddd;
+        background-color: white;
+        gridline-color: #eee;
+        selection-background-color: #cce5ff;
+        selection-color: #000;
+    }
+    QLabel {
+        font-size: 14px;
+    }
+   </string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -33,17 +72,7 @@
      <item>
       <widget class="QPushButton" name="btSearch">
        <property name="styleSheet">
-        <string>
-         QPushButton {
-          background-color: #4CAF50;
-          color: white;
-          border-radius: 5px;
-          padding: 5px 10px;
-         }
-         QPushButton:hover {
-          background-color: #45a049;
-         }
-        </string>
+        <string/>
        </property>
        <property name="text">
         <string>查找</string>
@@ -53,14 +82,7 @@
      <item>
       <widget class="QComboBox" name="orderCombo">
        <property name="styleSheet">
-        <string notr="true">
-       QComboBox {
-          background-color: #f4f4f4;
-          border-radius: 5px;
-          padding: 5px;
-		border: 1px solid #ccc;
-         }
-</string>
+        <string notr="true"/>
        </property>
        <item>
         <property name="text">
@@ -108,17 +130,7 @@
          <item>
           <widget class="QPushButton" name="btAdd">
            <property name="styleSheet">
-            <string>
-         QPushButton {
-          background-color: #2196F3;
-          color: white;
-          border-radius: 5px;
-          padding: 5px 10px;
-         }
-         QPushButton:hover {
-          background-color: #1e88e5;
-         }
-        </string>
+            <string/>
            </property>
            <property name="text">
             <string>添加</string>
@@ -128,17 +140,7 @@
          <item>
           <widget class="QPushButton" name="btDelete">
            <property name="styleSheet">
-            <string>
-         QPushButton {
-          background-color: #f44336;
-          color: white;
-          border-radius: 5px;
-          padding: 5px 10px;
-         }
-         QPushButton:hover {
-          background-color: #e53935;
-         }
-        </string>
+            <string/>
            </property>
            <property name="text">
             <string>删除</string>
@@ -148,17 +150,7 @@
          <item>
           <widget class="QPushButton" name="btEdit">
            <property name="styleSheet">
-            <string>
-         QPushButton {
-          background-color: #FF9800;
-          color: white;
-          border-radius: 5px;
-          padding: 5px 10px;
-         }
-         QPushButton:hover {
-          background-color: #fb8c00;
-         }
-        </string>
+            <string/>
            </property>
            <property name="text">
             <string>修改</string>
@@ -182,6 +174,13 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="btWarning">
+           <property name="text">
+            <string>预警</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <widget class="QPushButton" name="btImport">
            <property name="text">
@@ -216,32 +215,7 @@
      <item>
       <widget class="QTableView" name="tableView">
        <property name="styleSheet">
-        <string>
-       QTableView {
-        border: 1px solid #dcdcdc;
-        border-radius: 5px;
-        background-color: #fafafa;
-       }
-       QTableView::item {
-        padding: 8px;
-       }
-       QTableView::horizontalHeader {
-        background-color: #2196F3;
-        color: white;
-       }
-       QTableView::verticalHeader {
-        background-color: #f0f0f0;
-       }
-       QTableView::item:selected {
-        background-color: #4CAF50;
-        color: white;
-       }
-       QTableView::item[stockWarning=&quot;true&quot;] {
-        background-color: #fff0f0;
-        color: red;
-        font-weight: bold;
-       }
-      </string>
+        <string/>
        </property>
       </widget>
      </item>

@@ -12,6 +12,7 @@
 #include <QBarSet>
 #include <QPieSeries>
 #include <QPieSlice>
+#include <QDateTime>
 
 AnalysisView::AnalysisView(QWidget *parent) :
     QWidget(parent),
@@ -172,24 +173,28 @@ void AnalysisView::loadDrugData()
     db.pageSize = 10000;
     db.loadPageData();
 
-    // 创建一个QBarSet用于存储药品类型信息
-    QBarSet *drugSet = new QBarSet("药品类型");
+    // 创建一个QBarSeries用于存储药品类型信息
     QBarSeries *barSeries = new QBarSeries();
 
-    int prescriptionCount = 0, overCounterCount = 0;
+    // 创建一个QMap来存储每种药品类型的计数
+    QMap<QString, int> typeCountMap;
+
+    // 遍历药品数据并统计每种类型的数量
     for (int i = 0; i < drugModel->rowCount(); ++i) {
         QString type = drugModel->record(i).value("TYPE").toString();
-        if (type == "处方") {
-            prescriptionCount++;
-        } else if (type == "非处方") {
-            overCounterCount++;
+        if (typeCountMap.contains(type)) {
+            typeCountMap[type]++;
+        } else {
+            typeCountMap[type] = 1;
         }
     }
 
-    *drugSet << prescriptionCount << overCounterCount;
-
-    // 将QBarSet加入到QBarSeries
-    barSeries->append(drugSet);
+    // 创建一个QBarSet并将每种类型的数量添加到QBarSet中
+    for (auto it = typeCountMap.begin(); it != typeCountMap.end(); ++it) {
+        QBarSet *drugSet = new QBarSet(it.key());  // 使用药品类型作为标题
+        *drugSet << it.value();  // 添加数量到QBarSet
+        barSeries->append(drugSet);  // 将QBarSet添加到QBarSeries
+    }
 
     // 创建一个QChart并设置其标题
     QChart *chart = new QChart();
@@ -204,6 +209,7 @@ void AnalysisView::loadDrugData()
     yAxis->setTickCount(6); // 设置Y轴的刻度数量
     yAxis->setMinorTickCount(0);  // 设置不显示次级刻度
     yAxis->setLabelFormat("%d");  // 设置标签格式为整数
+
     chart->setAxisY(yAxis, barSeries);
 
     // 直接将QChart设置到QChartView中
@@ -211,7 +217,6 @@ void AnalysisView::loadDrugData()
 }
 
 
-// 加载就诊模块的数据
 void AnalysisView::loadMedicalRecordData()
 {
     qDebug() << "加载就诊数据";
@@ -224,29 +229,40 @@ void AnalysisView::loadMedicalRecordData()
     db.loadPageData();
 
     // 用一个QMap来存储日期和对应的就诊次数
-    QMap<QDate, int> dateVisitCount;
+    QMap<QString, int> dateVisitCount;
 
     // 遍历数据，统计每个日期的就诊次数
     for (int i = 0; i < medicalRecordModel->rowCount(); ++i) {
         QString dateString = medicalRecordModel->record(i).value("DATE").toString();
-        QDate date = QDate::fromString(dateString, "yyyy-MM-dd");  // 假设日期格式是 "yyyy-MM-dd"
+        // 输出每个解析的日期，确认格式
+        qDebug() << "日期：" << dateString;
 
-        // 增加日期的就诊次数
-        if (date.isValid()) {
-            dateVisitCount[date]++;
+        // 检查日期是否有效
+        if (QDate::fromString(dateString, "yyyy-MM-dd").isValid()) {
+            dateVisitCount[dateString]++;
+        } else {
+            qDebug() << "无效日期：" << dateString;
         }
     }
 
     // 创建一个QLineSeries用于存储就诊次数的时间变化图
     QLineSeries *lineSeries = new QLineSeries();
 
-    // 将日期按顺序插入到QLineSeries中
-    QList<QDate> sortedDates = dateVisitCount.keys();  // 获取所有日期并排序
-    std::sort(sortedDates.begin(), sortedDates.end());
+    // 将日期按字符串排序
+    QList<QString> sortedDates = dateVisitCount.keys();  // 获取所有日期并排序
+    std::sort(sortedDates.begin(), sortedDates.end());  // 按照字符串排序
 
-    for (const QDate &date : sortedDates) {
-        int visitCount = dateVisitCount[date];
-        lineSeries->append(date.toJulianDay(), visitCount);  // 将日期转换为Julian Day作为X轴
+    // 遍历排序后的日期并添加到折线图中
+    for (const QString &dateString : sortedDates) {
+        int visitCount = dateVisitCount[dateString];
+        QDateTime dateTime = QDateTime::fromString(dateString, "yyyy-MM-dd");  // 使用字符串转为QDateTime
+        lineSeries->append(dateTime.toMSecsSinceEpoch(), visitCount);  // 使用毫秒时间戳作为X轴
+    }
+
+    // 输出QLineSeries中的数据
+    for (int i = 0; i < lineSeries->count(); ++i) {
+        QPointF point = lineSeries->at(i);
+        qDebug() << "线条数据 - 日期 (时间戳):" << point.x() << ", 就诊次数:" << point.y();
     }
 
     // 创建一个QChart并设置其标题
@@ -263,9 +279,17 @@ void AnalysisView::loadMedicalRecordData()
     axisX->setTitleText("日期");
     chart->setAxisX(axisX, lineSeries);  // 设置X轴
 
+    qDebug() << "这是x轴" << lineSeries;
+
     // 直接将QChart设置到QChartView中
     ui->medicalRecordChart->setChart(chart);  // 直接设置QChart，不需要QChartView
 }
+
+
+
+
+
+
 
 
 

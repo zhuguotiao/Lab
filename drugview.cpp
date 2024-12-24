@@ -135,3 +135,17 @@ void DrugView::on_btExport_clicked()
     IDatabase::getInstance().exportData();
 }
 
+
+void DrugView::on_btWarning_clicked()
+{
+    // 拼接最终的过滤条件
+    QString filter = "inventory < 10";
+
+
+    // 打印完整的过滤条件
+    qDebug() << "Final filter string:" << filter;
+
+    // 调用数据库实例的搜索方法
+    IDatabase::getInstance().search(filter);
+}
+

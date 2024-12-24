@@ -25,15 +25,20 @@
         border-radius: 5px;
         padding: 5px;
     }
+	QComboBox{
+		background-color: #fafafa;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px 15px;
+	}
     QPushButton {
-        background-color: #0078d7;
-        color: white;
-        border: none;
+        background-color: #fafafa;
+        border: 1px solid #ccc;
         border-radius: 5px;
         padding: 8px 15px;
     }
     QPushButton:hover {
-        background-color: #0056b3;
+        background-color: #f3f3f3;
     }
     QTableView {
         border: 1px solid #ddd;
@@ -61,6 +66,10 @@
       <widget class="QPushButton" name="btSearch">
        <property name="text">
         <string>查找</string>
+       </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/search.png</normaloff>:/img/search.png</iconset>
        </property>
       </widget>
      </item>

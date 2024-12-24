@@ -13,6 +13,39 @@
   <property name="windowTitle">
    <string>患者管理</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget {
+        background-color: #f9f9f9;
+        font-family: &quot;Arial&quot;, sans-serif;
+        color: #333;
+    }
+    QLineEdit {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    QPushButton {
+        background-color: #fafafa;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px 15px;
+    }
+    QPushButton:hover {
+        background-color: #f3f3f3;
+    }
+    QTableView {
+        border: 1px solid #ddd;
+        background-color: white;
+        gridline-color: #eee;
+        selection-background-color: #cce5ff;
+        selection-color: #000;
+    }
+    QLabel {
+        font-size: 14px;
+    }
+   </string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">

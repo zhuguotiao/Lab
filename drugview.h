@@ -34,6 +34,8 @@ private slots:
 
     void on_btExport_clicked();
 
+    void on_btWarning_clicked();
+
 signals:
     void goDrugEditView(int index);
 
