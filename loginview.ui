@@ -9,35 +9,49 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>500</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>登录</string>
+   <string>社区医疗信息管理系统</string>
   </property>
   <property name="styleSheet">
    <string>
     QWidget {
-        background-color: #f7f9fc;
-        font-family: Arial, sans-serif;
+        background-color: #eef2f5;
+        font-family: &quot;Segoe UI&quot;, Arial, sans-serif;
     }
     QLabel {
-        color: #333;
+        color: #34495e;
+        font-size: 14px;
+    }
+    QLineEdit {
+        background-color: #ffffff;
+        border: 1px solid #dcdfe6;
+        border-radius: 8px;
+        padding: 8px;
+        font-size: 14px;
+    }
+    QLineEdit:focus {
+        border: 1px solid #5cb85c;
     }
     QPushButton {
         background-color: #5cb85c;
         color: white;
-        border-radius: 5px;
-        padding: 5px;
+        font-size: 14px;
+        border-radius: 8px;
+        padding: 10px;
     }
     QPushButton:hover {
         background-color: #4cae4c;
     }
-    QLineEdit {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 5px;
+    QPushButton:pressed {
+        background-color: #449d44;
+    }
+    QPushButton:disabled {
+        background-color: #c8e1c8;
+        color: #ffffff;
     }
    </string>
   </property>
@@ -46,13 +60,23 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>Arial</family>
-       <pointsize>18</pointsize>
+       <family>Segoe UI</family>
+       <pointsize>-1</pointsize>
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string>
+       QLabel {
+           color: #2c3e50;
+           font-size: 20px;
+           font-weight: bold;
+           margin-bottom: 15px;
+       }
+      </string>
+     </property>
      <property name="text">
-      <string>欢迎使用诊断测试系统</string>
+      <string>欢迎登录</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -61,6 +85,18 @@
    </item>
    <item>
     <layout class="QFormLayout" name="formLayout">
+     <property name="labelAlignment">
+      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+     </property>
+     <property name="formAlignment">
+      <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
+     </property>
+     <property name="horizontalSpacing">
+      <number>15</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>15</number>
+     </property>
      <item row="0" column="0">
       <widget class="QLabel" name="label_username">
        <property name="text">
@@ -101,7 +137,33 @@
     </layout>
    </item>
    <item>
+    <widget class="QFrame" name="line">
+     <property name="frameShape">
+      <enum>QFrame::Shape::HLine</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Sunken</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="buttonLayout">
+     <property name="spacing">
+      <number>20</number>
+     </property>
+     <item>
+      <spacer name="horizontalSpacerLeft">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
      <item>
       <widget class="QPushButton" name="btReserve">
        <property name="text">
@@ -115,6 +177,19 @@
         <string>登录</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacerRight">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>

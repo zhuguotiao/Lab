@@ -24,6 +24,7 @@ void IDatabase::initDatabase()
 
 bool IDatabase::initPatientModel()
 {
+    initDatabase();
     filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("patient");
@@ -60,6 +61,8 @@ bool IDatabase::initPatientModel()
 
 bool IDatabase::initDocotorModel()
 {
+    initDatabase();
+
     filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("doctor");
@@ -115,6 +118,7 @@ int IDatabase::addNewDoctor()
 
 bool IDatabase::initDrugModel()
 {
+    initDatabase();
     filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("drug");
@@ -165,6 +169,7 @@ int IDatabase::addNewDrug()
 
 bool IDatabase::initMedicalRecordModel()
 {
+    initDatabase();
     filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("medicalrecord");
@@ -239,6 +244,7 @@ bool IDatabase::insertReservation(const QString &doctor, const QDate &date, cons
 
 bool IDatabase::initDocotorReportModel()
 {
+    initDatabase();
     filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("doctorreport");
@@ -293,6 +299,7 @@ int IDatabase::addNewDoctorReport()
 
 bool IDatabase::initReserveModel()
 {
+    initDatabase();
     filter="";
     tabModel=new QSqlTableModel(this,database);
     tabModel->setTable("reserve");

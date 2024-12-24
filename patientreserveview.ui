@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Patient Appointment</string>
+   <string>预约界面</string>
   </property>
   <property name="styleSheet">
    <string notr="true">
@@ -130,7 +130,11 @@
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="QTimeEdit" name="dbEditTime"/>
+      <widget class="QTimeEdit" name="dbEditTime">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

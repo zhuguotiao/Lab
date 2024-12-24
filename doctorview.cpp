@@ -19,7 +19,6 @@ DoctorView::DoctorView(QWidget *parent) :
     ui->tableView->setAlternatingRowColors(true);
 
     IDatabase &iDatabase=IDatabase::getInstance();
-
     if(iDatabase.initDocotorModel()){
         ui->tableView->setModel(iDatabase.tabModel);
         ui->tableView->setSelectionModel(iDatabase.selection);

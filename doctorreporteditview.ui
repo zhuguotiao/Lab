@@ -22,6 +22,13 @@
         font-size: 12px;
     }
 
+	QDateEdit{
+		border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding: 4px;
+        background: #ffffff;
+	}
+
     /* 设置 QLabel 的样式 */
     QLabel {
         color: #333333;
@@ -75,86 +82,94 @@
     }
    </string>
   </property>
-  <layout class="QFormLayout" name="formLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="labelPatientFeedback_2">
-     <property name="text">
-      <string>编号</string>
-     </property>
-    </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelPatientFeedback_2">
+       <property name="text">
+        <string>编号</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="dbEditID">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelDoctorName">
+       <property name="text">
+        <string>医生姓名：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="dbEditDoctorName">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelPatientName">
+       <property name="text">
+        <string>患者姓名：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="dbComboPatientName"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="labelConsultationStatus">
+       <property name="text">
+        <string>就诊情况：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="dbEditConsultation"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="labelTreatmentEffect">
+       <property name="text">
+        <string>治疗效果：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="dbEditTreatmentEffect"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="labelPatientFeedback">
+       <property name="text">
+        <string>患者反馈：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="dbEditPatientFeedback"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="labelPatientFeedback_3">
+       <property name="text">
+        <string>创建时间</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QDateEdit" name="dbEditcCreateTime">
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="dbEditID">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="labelDoctorName">
-     <property name="text">
-      <string>医生姓名：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="dbEditDoctorName">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="labelPatientName">
-     <property name="text">
-      <string>患者姓名：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QComboBox" name="dbComboPatientName"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="labelConsultationStatus">
-     <property name="text">
-      <string>就诊情况：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="dbEditConsultation"/>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="labelTreatmentEffect">
-     <property name="text">
-      <string>治疗效果：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="dbEditTreatmentEffect"/>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="labelPatientFeedback">
-     <property name="text">
-      <string>患者反馈：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="dbEditPatientFeedback"/>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="labelPatientFeedback_3">
-     <property name="text">
-      <string>创建时间</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QDateEdit" name="dbEditcCreateTime"/>
-   </item>
-   <item row="7" column="1">
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Orientation::Vertical</enum>
@@ -167,7 +182,7 @@
      </property>
     </spacer>
    </item>
-   <item row="8" column="0" colspan="2">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <property name="spacing">
       <number>20</number>
