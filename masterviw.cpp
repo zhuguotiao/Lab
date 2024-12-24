@@ -56,10 +56,17 @@ void MasterViw::goWelcomeView(const QString &type)
     // 动态查找并隐藏按钮
        if (type == "1") {
            QPushButton *btDrug = welcomeView->findChild<QPushButton *>("btDrug");
+           QPushButton *btPatient = welcomeView->findChild<QPushButton *>("btPatient");
+           QPushButton *btAnalysis = welcomeView->findChild<QPushButton *>("btDataAnalysis");
+           if(btAnalysis) btAnalysis->hide();
            if (btDrug) btDrug->hide();
+           if (btPatient) btPatient->hide();
+
        } else if (type == "2") {
            QPushButton *btPatient = welcomeView->findChild<QPushButton *>("btPatient");
            QPushButton *btMedicalRecord = welcomeView->findChild<QPushButton *>("btMedicalRecord");
+           QPushButton *btAnalysis = welcomeView->findChild<QPushButton *>("btDataAnalysis");
+           if(btAnalysis) btAnalysis->hide();
            if (btPatient) btPatient->hide();
            if (btMedicalRecord) btMedicalRecord->hide();
        }

@@ -25,6 +25,12 @@
         border-radius: 5px;
         padding: 5px;
     }
+	QComboBox{
+		background-color: #fafafa;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px 15px;
+	}
     QPushButton {
         background-color: #fafafa;
         border: 1px solid #ccc;
@@ -61,17 +67,16 @@
        <property name="text">
         <string>查找</string>
        </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/search.png</normaloff>:/img/search.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QComboBox" name="orderCombo">
        <property name="styleSheet">
-        <string notr="true">QComboBox {
-          background-color: #f4f4f4;
-          border-radius: 5px;
-          padding: 5px;
-         }
-        </string>
+        <string notr="true"/>
        </property>
        <item>
         <property name="text">
@@ -111,12 +116,20 @@
            <property name="text">
             <string>添加</string>
            </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/add.png</normaloff>:/img/add.png</iconset>
+           </property>
           </widget>
          </item>
          <item row="0" column="1">
           <widget class="QPushButton" name="btEdit">
            <property name="text">
             <string>修改</string>
+           </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/edit.png</normaloff>:/img/edit.png</iconset>
            </property>
           </widget>
          </item>
@@ -125,12 +138,20 @@
            <property name="text">
             <string>删除</string>
            </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/delete.png</normaloff>:/img/delete.png</iconset>
+           </property>
           </widget>
          </item>
          <item row="1" column="1">
           <widget class="QPushButton" name="btExport">
            <property name="text">
             <string>导出</string>
+           </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/export.png</normaloff>:/img/export.png</iconset>
            </property>
           </widget>
          </item>
@@ -218,6 +239,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="lab4.qrc"/>
+ </resources>
  <connections/>
 </ui>

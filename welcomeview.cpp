@@ -2,10 +2,12 @@
 #include "ui_welcomeview.h"
 #include "QDebug"
 #include <QFile>
-#include <QMessageBox>
 #include <QDateTime>
 #include <QDir>
 #include <QFileDialog>
+#include <QMessageBox>
+
+#include <QSqlDatabase>
 #include "idatabase.h""
 
 
@@ -98,18 +100,7 @@ void WelcomeView::on_btSave_clicked()
     }
 }
 
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QFile>
-#include <QDir>
-#include <QDateTime>
 
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QFile>
-#include <QDir>
-#include <QDateTime>
-#include <QSqlDatabase>
 
 void WelcomeView::on_btResume_clicked()
 {

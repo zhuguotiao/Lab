@@ -67,17 +67,16 @@
        <property name="text">
         <string>查找</string>
        </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/search.png</normaloff>:/img/search.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QComboBox" name="orderCombo">
        <property name="styleSheet">
-        <string notr="true">QComboBox {
-          background-color: #f4f4f4;
-          border-radius: 5px;
-          padding: 5px;
-         }
-        </string>
+        <string notr="true"/>
        </property>
        <item>
         <property name="text">
@@ -95,6 +94,10 @@
       <widget class="QPushButton" name="btEdit">
        <property name="text">
         <string>修改</string>
+       </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/edit.png</normaloff>:/img/edit.png</iconset>
        </property>
       </widget>
      </item>
@@ -145,6 +148,10 @@
        <property name="text">
         <string>上一页</string>
        </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/prev.png</normaloff>:/img/prev.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
@@ -159,12 +166,18 @@
        <property name="text">
         <string>下一页</string>
        </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/next.png</normaloff>:/img/next.png</iconset>
+       </property>
       </widget>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="lab4.qrc"/>
+ </resources>
  <connections/>
 </ui>

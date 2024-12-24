@@ -141,12 +141,18 @@
    <item>
     <widget class="QPushButton" name="btReserve">
      <property name="text">
-      <string>Reserve</string>
+      <string>预订</string>
+     </property>
+     <property name="icon">
+      <iconset resource="lab4.qrc">
+       <normaloff>:/img/reserve.png</normaloff>:/img/reserve.png</iconset>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="lab4.qrc"/>
+ </resources>
  <connections/>
 </ui>

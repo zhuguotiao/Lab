@@ -77,6 +77,10 @@
        <property name="text">
         <string>查找</string>
        </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/search.png</normaloff>:/img/search.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
@@ -135,6 +139,10 @@
            <property name="text">
             <string>添加</string>
            </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/add.png</normaloff>:/img/add.png</iconset>
+           </property>
           </widget>
          </item>
          <item>
@@ -145,6 +153,10 @@
            <property name="text">
             <string>删除</string>
            </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/delete.png</normaloff>:/img/delete.png</iconset>
+           </property>
           </widget>
          </item>
          <item>
@@ -154,6 +166,10 @@
            </property>
            <property name="text">
             <string>修改</string>
+           </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/edit.png</normaloff>:/img/edit.png</iconset>
            </property>
           </widget>
          </item>
@@ -179,6 +195,10 @@
            <property name="text">
             <string>预警</string>
            </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/warning.png</normaloff>:/img/warning.png</iconset>
+           </property>
           </widget>
          </item>
          <item>
@@ -186,12 +206,20 @@
            <property name="text">
             <string>导入</string>
            </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/import.png</normaloff>:/img/import.png</iconset>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btExport">
            <property name="text">
             <string>导出</string>
+           </property>
+           <property name="icon">
+            <iconset resource="lab4.qrc">
+             <normaloff>:/img/export.png</normaloff>:/img/export.png</iconset>
            </property>
           </widget>
          </item>
@@ -265,6 +293,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="lab4.qrc"/>
+ </resources>
  <connections/>
 </ui>

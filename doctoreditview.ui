@@ -132,7 +132,7 @@
         <number>0</number>
        </property>
        <property name="maximum">
-        <number>150</number>
+        <number>20000</number>
        </property>
       </widget>
      </item>
@@ -187,16 +187,24 @@
    <item>
     <layout class="QHBoxLayout" name="buttonLayout">
      <item>
-      <widget class="QPushButton" name="btSave">
+      <widget class="QPushButton" name="btCancel">
        <property name="text">
-        <string>保存</string>
+        <string>取消</string>
+       </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/cancel.png</normaloff>:/img/cancel.png</iconset>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btCancel">
+      <widget class="QPushButton" name="btSave">
        <property name="text">
-        <string>取消</string>
+        <string>保存</string>
+       </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/save.png</normaloff>:/img/save.png</iconset>
        </property>
       </widget>
      </item>
@@ -204,6 +212,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="lab4.qrc"/>
+ </resources>
  <connections/>
 </ui>

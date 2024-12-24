@@ -9,5 +9,12 @@
         <file>img/next.png</file>
         <file>img/prev.png</file>
         <file>img/background.png</file>
+        <file>img/export.png</file>
+        <file>img/import.png</file>
+        <file>img/warning.png</file>
+        <file>img/save.png</file>
+        <file>img/cancel.png</file>
+        <file>img/login.png</file>
+        <file>img/reserve.png</file>
     </qresource>
 </RCC>

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Doctor Information Editor</string>
+   <string>药品信息编辑</string>
   </property>
   <property name="styleSheet">
    <string notr="true">
@@ -126,12 +126,42 @@
       <widget class="QComboBox" name="dbComboType">
        <item>
         <property name="text">
-         <string>处方</string>
+         <string>感冒药</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>非处方</string>
+         <string>抗生素</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>抗过敏药</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>止痛药</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>糖尿病药物</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>胃药</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>补充剂</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>降压药</string>
         </property>
        </item>
       </widget>
@@ -148,6 +178,10 @@
        <property name="text">
         <string>取消</string>
        </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/cancel.png</normaloff>:/img/cancel.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
@@ -155,12 +189,18 @@
        <property name="text">
         <string>保存</string>
        </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/save.png</normaloff>:/img/save.png</iconset>
+       </property>
       </widget>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="lab4.qrc"/>
+ </resources>
  <connections/>
 </ui>

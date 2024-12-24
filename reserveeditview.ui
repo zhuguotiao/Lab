@@ -160,12 +160,20 @@
        <property name="text">
         <string>取消</string>
        </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/cancel.png</normaloff>:/img/cancel.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="btSave">
        <property name="text">
         <string>保存</string>
+       </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/save.png</normaloff>:/img/save.png</iconset>
        </property>
       </widget>
      </item>
@@ -176,6 +184,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="lab4.qrc"/>
+ </resources>
  <connections/>
 </ui>

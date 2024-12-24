@@ -169,12 +169,20 @@
        <property name="text">
         <string>预约</string>
        </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/reserve.png</normaloff>:/img/reserve.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="btSignIn">
        <property name="text">
         <string>登录</string>
+       </property>
+       <property name="icon">
+        <iconset resource="lab4.qrc">
+         <normaloff>:/img/login.png</normaloff>:/img/login.png</iconset>
        </property>
       </widget>
      </item>
@@ -195,6 +203,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="lab4.qrc"/>
+ </resources>
  <connections/>
 </ui>
